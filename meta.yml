@@ -1,0 +1,78 @@
+---
+fullname: lip-ssr-tuto
+shortname: lip-ssr-tuto
+organization: CohenCyril
+community: false
+action: false
+coqdoc: false
+
+synopsis: >-
+  A tutorial for LIP members
+
+description: |-
+  A tutorial for LIP members
+
+authors:
+- name: Cyril Cohen
+  initial: true
+
+maintainers:
+- name: Cyril Cohen
+  nickname: CohenCyril
+
+opam-file-maintainer: Cyril Cohen <cyril.cohen@inria.fr>
+
+opam-file-version: dev
+
+license:
+  fullname: GNU Lesser General Public License v2.1
+  identifier: LGPL-2.1-or-later
+  file: LICENSE
+
+supported_coq_versions:
+  text: "8.18 to 8.20"
+  opam: '{>= "8.18" & < "8.21"}'
+
+tested_coq_opam_versions:
+- version: '8.18'
+- version: '8.19'
+- version: '8.20'
+
+dependencies:
+- opam:
+    name: coq-mathcomp-character
+    version: '{= "2.2.0"}'
+- opam:
+    name: coq-mathcomp-algebra-tactics
+    version: '{= "1.2.3"}'
+- opam:
+    name: coq-mathcomp-zify
+    version: '{= "1.5.0"}'
+- opam:
+    name: coq-mathcomp-analysis
+    version: '{= "1.5.0"}'
+
+namespace: LipSsrTuto
+
+keywords:
+- name: tutorial
+- name: ssreflect
+- name: mathcomp
+
+categories:
+- name: Computer Science
+- name: Miscellaneous/Coq Extensions
+
+build: |-
+  ## Building and installation instructions
+
+  - Using opam (`opam install .`)
+  - Using nix (`nix-shell`)
+  - Using docker (use vscode with devcontainers)
+
+documentation: |-
+  ## Documentation
+
+  Follow the lectures in order.
+
+---

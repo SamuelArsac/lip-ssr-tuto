@@ -1,0 +1,10 @@
+{
+    "name": "lip-ssr-tuto",
+    "image": "cohencyril/lip-ssr-tuto",
+    "postAttachCommand": "make -j8 -k",
+    "customizations": {
+        "vscode": {
+            "extensions": ["maximedenes.vscoq", "gares.elpi-lang", "gares.coq-elpi-lang"],
+        }
+    }
+}
