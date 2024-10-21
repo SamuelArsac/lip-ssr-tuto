@@ -42,15 +42,19 @@ dependencies:
 - opam:
     name: coq-mathcomp-character
     version: '{= "2.2.0"}'
+  description: Mathematical components version 2.2.0
 - opam:
     name: coq-mathcomp-algebra-tactics
     version: '{= "1.2.3"}'
+  description: Mathematical components algebra tactics
 - opam:
     name: coq-mathcomp-zify
     version: '{= "1.5.0"}'
+  description: Mathematical components zify plugin
 - opam:
     name: coq-mathcomp-analysis
     version: '{= "1.5.0"}'
+  description: Mathematical components analysis library
 
 namespace: LipSsrTuto
 

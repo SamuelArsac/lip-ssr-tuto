@@ -18,11 +18,11 @@ A tutorial for LIP members
 - License: [GNU Lesser General Public License v2.1](LICENSE)
 - Compatible Coq versions: 8.18 to 8.20
 - Additional dependencies:
-  - A tutorial for LIP members
-  - A tutorial for LIP members
-  - A tutorial for LIP members
-  - A tutorial for LIP members
-- Coq namespace: `SsrTuto`
+  - Mathematical components version 2.2.0
+  - Mathematical components algebra tactics
+  - Mathematical components zify plugin
+  - Mathematical components analysis library
+- Coq namespace: `LipSsrTuto`
 - Related publication(s): none
 
 ## Building and installation instructions
