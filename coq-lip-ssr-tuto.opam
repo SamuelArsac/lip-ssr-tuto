@@ -20,7 +20,7 @@ depends: [
   "coq" {>= "8.18" & < "8.21"}
   "coq-mathcomp-character" {= "2.2.0"}
   "coq-mathcomp-algebra-tactics" {= "1.2.3"}
-  "coq-mathcomp-zify" {= "1.5.0"}
+  "coq-mathcomp-zify" {= "1.5.0+2.0+8.16"}
   "coq-mathcomp-analysis" {= "1.5.0"}
 ]
 
