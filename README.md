@@ -39,8 +39,8 @@ doc](https://coq.inria.fr/opam-using.html), run:
 opam install --deps-only .
 make
 ```
-You can now run your favourite editor, you may need to install your
-favourite language server (i.e. `opam install coq-lsp` or
+You can now run your favorite editor, you may need to install your
+favorite language server (i.e. `opam install coq-lsp` or
 `opam install vscoq-language-server`)
 
 ### Using nix
@@ -50,14 +50,17 @@ After [installing nix](https://nixos.org/download/) and
 cachix use coq
 cachix use coq-community
 cachix use math-comp
-cachix use cohencyril`
+cachix use cohencyril
 ```
 
 Then, every time you want to use it you need to run (may take a few
 minutes the first time)
 ```bash
 nix-shell
+make
 ```
+You can now run your favorite editor, you **do not need** to install your
+favorite language server (they are included in the shell)
 
 ### Using docker (warning, the image is > 17GB)
 
