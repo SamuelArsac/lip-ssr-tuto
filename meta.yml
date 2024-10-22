@@ -49,8 +49,8 @@ dependencies:
   description: Mathematical components algebra tactics 1.2.3
 - opam:
     name: coq-mathcomp-zify
-    version: '{= "1.5.0"}'
-  description: Mathematical components zify plugin 1.5.0
+    version: '{= "1.5.0+2.0+8.16"}'
+  description: Mathematical components zify plugin 1.5.0+2.0+8.16
 - opam:
     name: coq-mathcomp-analysis
     version: '{= "1.5.0"}'
@@ -95,7 +95,7 @@ build: |-
   cachix use math-comp
   cachix use cohencyril
   ```
-  
+
   Then, every time you want to use it you need to run (may take a few
   minutes the first time)
   ```bash

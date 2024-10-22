@@ -20,7 +20,7 @@ A tutorial for LIP members
 - Additional dependencies:
   - Mathematical components version 2.2.0
   - Mathematical components algebra tactics 1.2.3
-  - Mathematical components zify plugin 1.5.0
+  - Mathematical components zify plugin 1.5.0+2.0+8.16
   - Mathematical components analysis library 1.5.0
 - Coq namespace: `LipSsrTuto`
 - Related publication(s): none
