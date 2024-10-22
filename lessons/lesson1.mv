@@ -605,7 +605,9 @@ End reflect_for_eqP.
 
 - the `in` tacticial
 - selection patterns (for `rewrite`, `set` and `:`)
+- more switches and operators (`{names}`, `/[dup]`, `/[swap]`, `/[apply]`, `/[inE]`, etc)
 - complex ad-hoc induction schemes
+- forward tactics (`have`, `suff`, `pose`, `wlog`)
 - "spec" lemmas (`ifP`, `leqP` etc)
 
 ### Black belt ssreflect features
