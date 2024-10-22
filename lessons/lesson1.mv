@@ -599,4 +599,28 @@ End reflect_for_eqP.
 
 ---
 
+## What's next?
+
+### Advanced ssreflect features
+
+- the `in` tacticial
+- selection patterns (for `rewrite`, `set` and `:`)
+- complex ad-hoc induction schemes
+- "spec" lemmas (`ifP`, `leqP` etc)
+
+### Black belt ssreflect features
+
+- full `wlog` and `gen have` syntax
+- induction schemes with helpers
+
+### Overloading
+
+- HB
+- hierarchies of algebraic structures and morphisms
+- hierarchies of sub-structures
+- canonical tuples
+- iterated operations, etc
+
+---
+
 Thanks
