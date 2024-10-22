@@ -1,3 +1,4 @@
+theories/test.v
 theories/lesson1.v
 
 
@@ -18,3 +19,4 @@ theories/lesson1.v
 -arg -w -arg -overwriting-delimiting-key
 -arg -w -arg -closed-notation-not-level-0
 -arg -w -arg -postfix-notation-not-level-1
+-arg -w -arg -notation-incompatible-prefix
