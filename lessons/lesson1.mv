@@ -463,6 +463,8 @@ Lemma test_is_true_coercion : true.
 Proof. rewrite /is_true. by []. Qed.
 ```
 
+---
+
 ### Equality 1/2
 - privileged role (many lemmas are stated with `_ = _` rather than `is_true (_ == _)`)
 - the `eqP` view: `is_true (a == b)   <->    a = b`
