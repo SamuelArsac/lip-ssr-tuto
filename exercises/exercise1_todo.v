@@ -12,23 +12,34 @@ Implicit Type m n i j k : nat.
     - use no lemma to prove the following statement
 *)
 Lemma orbC p q : p || q = q || p.
-Proof. Admitted.
+Proof.
+  by case: p; case: q.
+Qed.
 
+Search (reflect (_ -> _) (_ ==> _)).
 (**
 ** Exercise 2:
    - look up what [==>] is check if there are relevant views
    - prove that as you like
 *)
 Lemma Pierce p q : ((p ==> q) ==> p) ==> p.
-Proof. Admitted.
+Proof.
+  by case: p; case: q.
+Qed.
 
+Search ((_ -> _) -> ~~ _ -> ~~ _).
 (**
 ** Exercise 3:
     - look for lemmas supporting contrapositive reasoning
 *)
 Lemma bool_gimmics1 i : i != i.-1 -> i != 0.
-Proof. Admitted.
+Proof.
+  apply /contra.
+  by move /eqP ->.
+Qed.
 
+Locate "_ (+) _".
+Search (reflect _ (addb _ _)).
 (**
 ** Exercise 4:
     - what is [(+)] ?
@@ -36,15 +47,29 @@ Proof. Admitted.
     - now find another proof without the view
 *)
 Lemma find_me p q :  ~~ p = q -> p (+) q.
-Proof. Admitted.
+Proof.
+  (*by move /addbP. *)
+  move <-.
+  by case: p.
+Qed.
 
+Locate "./2".
+Locate ".*2".
+Search half double.
 (**
 ** Exercise 5:
    - it helps to find out what is behind [./2] and [.*2] in order to [Search]
    - any proof would do, but there is one not using [implyP]
 *)
 Lemma view_gimmics1 p a b : p -> (p ==> (a == b.*2)) -> a./2 = b.
-Proof. Admitted.
+Proof.
+  move /eqP.
+  case: p;
+  rewrite /=.
+  move => _ /eqP ->.
+  by rewrite doubleK.
+  by [].
+Qed.
 
 (**
 ** Exercise 6:
@@ -53,7 +78,15 @@ Proof. Admitted.
 *)
 Lemma bool_gimmics2 p q r : ~~ p && (r == q) -> q ==> (p || r).
 Proof.
-Admitted.
+  (* case: p; rewrite /=.
+  discriminate.
+  move /eqP ->.
+  by apply /implyP.*)
+  move=> /andP [_ /eqP ->].
+  apply /implyP => qb.
+  apply /orP.
+  by right.
+Qed.
 
 (**
 ** Exercise 7:
@@ -62,7 +95,10 @@ Admitted.
 *)
 Lemma iterSr A n (f : A -> A) x : iter n.+1 f x = iter n f (f x).
 Proof.
-Admitted.
+  elim: n x => [|n IHn x].
+  by [].
+  by rewrite /= -IHn.
+Qed.
 
 (**
 ** Exercise 8:
@@ -71,7 +107,11 @@ Admitted.
     - prove the following statement by induction
 *)
 Lemma iter_predn m n : iter n predn m = m - n.
-Proof. Admitted.
+Proof.
+  elim: n => [|n IHn].
+  by rewrite subn0.
+  by rewrite /= IHn subnS.
+Qed.
 
 (**
 ** Exercise 9:
@@ -87,7 +127,13 @@ Proof. Admitted.
 >>
 *)
 Lemma ltn_neqAle m n : (m < n) = (m != n) && (m <= n).
-Proof. Admitted.
+Proof.
+  rewrite ltnNge.
+  rewrite leq_eqVlt.
+  rewrite negb_or.
+  rewrite eq_sym.
+  by rewrite -leqNgt.
+Qed.
 
 (**
 ** Exercise 10:
@@ -102,4 +148,9 @@ Proof. Admitted.
 *)
 Lemma maxn_idPl m n : reflect (maxn m n = m) (m >= n).
 Proof.
-Admitted.
+  rewrite -subn_eq0.
+  rewrite -(eqn_add2l m).
+  rewrite addn0.
+  rewrite -maxnE maxnC.
+  apply /eqP.
+Qed.
