@@ -12,7 +12,7 @@ Implicit Type m n i j k : nat.
     - use no lemma to prove the following statement
 *)
 Lemma orbC p q : p || q = q || p.
-Proof. Admitted.
+Proof. by case: p; case: q. Qed.
 
 (**
 ** Exercise 2:
@@ -35,7 +35,7 @@ Proof. Admitted.
     - find the right view to prove this statement
     - now find another proof without the view
 *)
-Lemma find_me p q :  ~~ p = q -> p (+) q.
+Lemma find_me p q :  (~~ p) = q -> p (+) q.
 Proof. Admitted.
 
 (**
@@ -102,4 +102,5 @@ Proof. Admitted.
 *)
 Lemma maxn_idPl m n : reflect (maxn m n = m) (m >= n).
 Proof.
+
 Admitted.
