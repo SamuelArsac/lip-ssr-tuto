@@ -12,8 +12,8 @@ Exercise 1:
 *)
 Lemma cat_take_drop T n (s : seq T) : take n s ++ drop n s = s.
 Proof.
-
-Admitted.
+  by elim: s n => [//|t s] + [//|n /=] => ->.
+Qed.
 
 (** Exercise 2:
    - look at the definition of [take] and [size] and prove the following lemma
@@ -22,9 +22,10 @@ Admitted.
 Lemma size_take T n (s : seq T) :
   size (take n s) = if n < size s then n else size s.
 Proof.
-
-
-Admitted.
+  elim: s n => // t s + [] //= n => ->.
+  rewrite ltnS.
+  by case: ifP.
+Qed.
 
 (** Exercise 3:
     - another proof by cases 
@@ -32,9 +33,8 @@ Admitted.
 Lemma takel_cat T n (s1 s2 : seq T) :
   n <= size s1 -> take n (s1 ++ s2) = take n s1.
 Proof.
-
-
-Admitted.
+  by elim: s1 s2 n => [|t s1 +] + [] //= => [[]//|+ s2] n IHs2 => ->.
+Qed.
 
 (** Exercise 4:
     - Look up the definition of [rot]
@@ -43,25 +43,26 @@ Admitted.
 *)
 Lemma size_rot T n (s : seq T) : size (rot n s) = size s.
 Proof.
-
-Admitted.
+  by rewrite /rot size_cat addnC -size_cat cat_take_drop.
+Qed.
 
 (** Exercise 5:
     - which is the size of an empty sequence?
     - Use lemmas about [size] and [filter] 
 *)
-Lemma has_filter (T : eqType) a (s : seq T)  : has a s = (filter a s != [::]).
+Lemma has_filter (T : eqType) a (s : seq T) : has a s = (filter a s != [::]).
 Proof.
-
-Admitted.
+  by rewrite -size_eq0 size_filter has_count lt0n.
+Qed.
 
 (** Exercise 6:
     - prove that by induction 
 *)
 Lemma filter_all T a (s : seq T) : all a (filter a s).
-Proof. 
-
-Admitted.
+Proof.
+  elim: s => [//|t s /=].
+  case: ifP => /= [->|_] //.
+Qed.
 
 (** Exercise 7:
   - prove that view (one branch is by induction) 

@@ -95,8 +95,7 @@ Qed.
 *)
 Lemma iterSr A n (f : A -> A) x : iter n.+1 f x = iter n f (f x).
 Proof.
-  elim: n x => [|n IHn x].
-  by [].
+  elim: n x => [//|n IHn x].
   by rewrite /= -IHn.
 Qed.
 
