@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-awk -f tools/codeblocks.awk $1  > $2
+awk -f tools/codeblocks.awk $1

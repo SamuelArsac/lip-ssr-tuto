@@ -23,7 +23,7 @@ height: 1250
 ⋄
 
 <small>
-Thanks to Yves Bertot, Laurence Rideau, Enrico Tasso and Laurent Thery for the contents.
+Thanks to Yves Bertot, Laurence Rideau, Enrico Tassi and Laurent Thery for the contents.
 Thanks to Emilio Jesús Gallego Arias for the `.mv` experience.
 </small>
 
@@ -272,6 +272,7 @@ Module ArgumentsToTactics.
 Lemma negb_and : forall b c, ~~ (b && c) = ~~ b || ~~ c.
 Proof.
 move=> b. move=> c. move: b. move: c.
+by case; case.
 Restart.
 move=> c b. move: b c.
 Restart.
@@ -280,10 +281,10 @@ Restart.
 by case; case.
 Qed.
 
-Lemma test_modus_ponens P Q : P -> (P -> Q) -> Q.
+Lemma test_modus_ponens P Q (toto : Prop) : P -> (P -> Q) -> Q.
 Proof.
-move=> p.
-apply. (* equivalent to `move=> pq; apply: pq` *)
+move=> p H.
+apply H. (* equivalent to `move=> pq; apply: pq` *)
 by []. (* or simply `exact` instead of `by apply`. *)
 Qed.
 
@@ -358,7 +359,7 @@ Infix "<=" := leq.
 
 ```coq
 Lemma leq0n n : (0 <= n) = true.
-Proof. (* compute. *) by []. Qed.
+Proof. by []. Qed.
 ```
 
 ---
@@ -385,11 +386,10 @@ Let's use these lemmas (or not):
 ```coq
 Lemma leqnn n : (n <= n) = true.
 Proof.
-elim: n => [|m IHm].
-  by apply: leq0n. (* or `exact: leq0n.` *)
-by rewrite leqSS IHm.
-Restart.
-by elim: n.
+elim: n => [|n IHn].
+  by [].
+rewrite leqSS.
+by apply: IHn.
 Qed.
 ```
 
@@ -425,7 +425,6 @@ Lemma andbC b1 b2 : (b1 && b2) = (b2 && b1).
 Proof.
 case: b1 => /=.
   case: b2.
-    rewrite /=.
     by [].
   by [].
 by case: b2.
@@ -476,15 +475,10 @@ Proof. rewrite /is_true. by []. Qed.
 ```coq
 Lemma test_eqP n m : n == m -> n.+1 + m.+1 = m.+1.*2.
 Proof.
-(*#
-Check eqP.
-move=> /eqP. move=> /eqP. move=> /eqP Enm. rewrite Enm.
-apply/eqP.
-apply/eqP.
-Search (_ + _) _.*2 inside ssrnat.
-exact: addnn.
-#*)
-by move=> /eqP ->; rewrite -addnn.
+move=> /eqP.
+move=> ->.
+rewrite addnn.
+by [].
 Qed.
 ```
 
