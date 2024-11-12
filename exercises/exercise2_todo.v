@@ -70,9 +70,9 @@ Qed.
 Lemma all_filterP T a (s : seq T) :
   reflect (filter a s = s) (all a s).
 Proof.
-
-
-Admitted.
+  apply: (iffP idP) => [|<-]; last by apply: filter_all.
+  elim: s => [//|x s IHs /= /andP [->] /IHs -> //].
+Qed.
 
 (** Exercise 8:
     - induction once more 
@@ -80,8 +80,9 @@ Admitted.
 Lemma mem_cat (T : eqType) (x : T) s1 s2 :
   (x \in s1 ++ s2) = (x \in s1) || (x \in s2).
 Proof.
-
-Admitted.
+  elim: s1 => [//|y s1 IHs1].
+  by rewrite cat_cons !in_cons IHs1 Bool.orb_assoc.
+Qed.
 
 (** Exercise 9:
     - prove this by induction on [s] 
@@ -89,13 +90,25 @@ Admitted.
 Lemma allP (T : eqType) (a : pred T) (s : seq T) :
   reflect (forall x, x \in s -> a x) (all a s).
 Proof.
-
-
-
-
-
-
-Admitted.
+  elim: s => [/=| x s IHs];
+  apply: (iffP idP) => //= [/andP [ax allas] x'|].
+  rewrite in_cons.
+  move=> /orP [/eqP -> //|].
+  by move: allas x' => /IHs.
+  move=> H.
+  apply /andP.
+  split.
+  apply: H.
+  rewrite in_cons.
+  apply /orP.
+  by left.
+  apply /IHs.
+  move=> x' x's.
+  apply: H.
+  rewrite in_cons.
+  apply /orP.
+  by right.
+Qed.
 
 
 
